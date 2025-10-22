@@ -50,7 +50,8 @@
                     <label for="duration" class="form-label">Duration</label>
                     <select class="form-select" id="duration">
                         <option value="30">30 s</option>
-                        <option value="60" selected>60 s</option>
+                        <option value="60" selected>1 min</option>
+                        <option value="120">2 min</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -64,9 +65,13 @@
             </div>
         </div>
 
-        <div class="text-center">
-            <!-- 开始按钮 -->
-            <button class="btn btn-primary" onclick="start()">Start</button>
+        <div id="startDiv" class="text-center">
+            <button id="btnStart" class="btn btn-primary" onclick="start()">Start</button>
+        </div>
+
+        <div id="docment" class="text-center">
+            <button class="btn btn-info" onclick="wireframe()">Wireframe</button>
+            <button class="btn btn-info" onclick="storyboards()">Storyboards</button>
         </div>
     </div>
 
@@ -75,6 +80,10 @@
             Your web browser does not support HTML5 Canvas.
         </canvas>
          <i id="replay" class="fa-regular fa-circle-play fa-5x hidden"></i>
+        <div id="controlbolume">
+            <label for="volumeControl">Volume:</label>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+        </div>
     </div>
     
     <footer>
