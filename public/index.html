@@ -17,24 +17,32 @@
      <div class="d-flex justify-content-start align-items-center mb-3">
   <img src="assets/Logo2.png" alt="Te Wai-o-Tāne Logo" style="height: 130px; width: auto;">
 </div>
-    <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
-      <div class="d-flex justify-content-center flex-grow-1 ms-5">
-  <button id="homeBtn" class="btn btn-secondary me-5">Home</button>
-  <button id="bookingBtn" class="btn btn-info ms-5">Booking</button>
+
+
+
+  <nav class="navbar navbar-expand-lg mb-3" style="background-color: #000000;">
+  <div class="container-fluid">
+   
+    <div class="d-flex mx-auto">
+      <button id="homeBtn" class="btn btn-success me-3">Home</button>
+      <button id="bookingBtn" class="btn btn-success mx-3">Booking</button>
+      <a href="./game.html" class="btn btn-success ms-3">Entertainment Video Game for Kids</a>
+    </div>
+
+    <div class="d-flex ms-auto">
+      <button class="btn btn-success me-2" onclick="wireframeT1()">Task 1 Wireframes</button>
+      <button class="btn btn-success me-2" onclick="wireframeT2()">Task 2 Wireframes</button>
+      <button class="btn btn-success" onclick="storyboards()">Game Storyboard</button>
+    </div>
   </div>
-  <a href="./game.html" class="btn btn-primary">
-    Entertainment Video Game for kids</a>
-  
-</div>
+</nav>
+
      
    <div id="bookingContainer"></div>
     <div id="map" class="border rounded shadow"></div>
     <div id="mainContainer"></div>
     </div>
     
-
-    
-
 
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
   <div class="modal-dialog">

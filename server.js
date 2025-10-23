@@ -25,7 +25,7 @@ let tours = [
       { time: "09:00", capacity: 8 },
       { time: "11:00", capacity: 0 },
     ],
-    image: "images/waiheke.jpg",
+    "image": "/assets/1.jpg",
   },
   {
     id: 2,
@@ -33,9 +33,9 @@ let tours = [
     location: { lat: -36.8305, lng: 174.7966 },
     launches: [
       { time: "10:00", capacity: 6 },
-      { time: "14:00", capacity: 2 },
+      { time: "14:00", capacity: 2 }, 
     ],
-    image: "images/harbour.jpg",
+    "image": "/assets/2.jpg",
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ let tours = [
       { time: "09:00", capacity: 10 },
       { time: "13:00", capacity: 4 },
     ],
-    image: "images/island.jpg",
+    "image": "/assets/3.jpg",  
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ let tours = [
       { time: "12:00", capacity: 5 },
       { time: "15:00", capacity: 3 },
     ],
-    image: "images/coastal.jpg",
+    "image": "/assets/4.jpg",
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ let tours = [
       { time: "10:00", capacity: 0 },
       { time: "14:00", capacity: 0 },
     ],
-    image: "images/pacific.jpg",
+    "image": "/assets/5.jpg",
   },
 ];
 

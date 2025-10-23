@@ -15,32 +15,68 @@ if (document.getElementById("map")) {
       }).addTo(map);
 
       
-      tours.forEach((tour) => {
-        const marker = L.marker([tour.location.lat, tour.location.lng]).addTo(map);
+tours.forEach((tour) => {
+  const marker = L.marker([tour.location.lat, tour.location.lng]).addTo(map);
 
-        const launchesHtml = tour.launches.map((l, index) => `
-          Time: ${l.time}<br>
-          Remaining seats: ${l.capacity}<br>
-          <a href="#" class="book-now" data-tour-id="${tour.id}" data-launch-index="${index}">Book Now</a>
-        `).join("<hr>");
+  const launchesHtml = tour.launches.map((l, index) => `
+    Time: ${l.time}<br>
+    Remaining seats: ${l.capacity}<br>
+    <a href="#" class="book-now" data-tour-id="${tour.id}" data-launch-index="${index}">Book Now</a>
+  `).join("<hr>");
 
-        marker.bindPopup(`<b>${tour.operator}</b><br><img src="${tour.image}" width="150"><br>${launchesHtml}`);
-      });
+  const popupContent = `<b>${tour.operator}</b><br>
+                        <img src="${tour.image}" width="150" style="display:block; margin-bottom:5px;"><br>
+                        ${launchesHtml}`;
 
-      
-      map.on("popupopen", function(e) {
-        const popupNode = e.popup.getElement();
-        popupNode.querySelectorAll(".book-now").forEach(link => {
-          link.addEventListener("click", (ev) => {
-            ev.preventDefault();
-            const tourId = parseInt(link.dataset.tourId);
-            const launchIndex = parseInt(link.dataset.launchIndex);
-            showBookingForm(tourId, launchIndex);
-          });
-        });
+  const popup = L.popup({
+    autoClose: false,
+    closeOnClick: false,
+    closeButton: false
+  }).setContent(popupContent);
+
+  let popupHovered = false;
+
+ 
+  marker.bindPopup(popup);
+
+  marker.on("mouseover", () => {
+    marker.openPopup();
+  });
+
+  marker.on("mouseout", () => {
+    setTimeout(() => {
+      if (!popupHovered) marker.closePopup();
+    }, 200);
+  });
+
+  popup.on('add', () => {
+    const popupEl = popup.getElement();
+
+    popupEl.addEventListener('mouseenter', () => {
+      popupHovered = true;
+    });
+
+    popupEl.addEventListener('mouseleave', () => {
+      popupHovered = false;
+      marker.closePopup();
+    });
+  });
+
+  marker.on("popupopen", function(e) {
+    const popupNode = e.popup.getElement();
+    popupNode.querySelectorAll(".book-now").forEach(link => {
+      link.addEventListener("click", (ev) => {
+        ev.preventDefault();
+        const tourId = parseInt(link.dataset.tourId);
+        const launchIndex = parseInt(link.dataset.launchIndex);
+        showBookingForm(tourId, launchIndex);
       });
     });
-}
+  });
+});
+});
+    }
+
 
 
 function showBookingForm(tourId, launchIndex) {
@@ -266,3 +302,16 @@ bookingResult.innerHTML = `
     });
   });
 } 
+
+
+function wireframeT1() {
+    window.open("assets/wireFrame/wireFrame task 1.pdf", "_blank");
+}
+
+function wireframeT2() {
+    window.open("assets/wireFrame/wireFrame task 2.pdf", "_blank");
+}
+
+function storyboards() {
+    window.open("assets/storyBoard/Storyboard task 2.pdf", "_blank");
+}
