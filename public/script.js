@@ -195,7 +195,7 @@ modalBody.innerHTML = `
     </table>
   </div>
 
-  <div class="mt-4 text-end">
+  <div class="mt-4 text-center">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
   </div>
 `;
