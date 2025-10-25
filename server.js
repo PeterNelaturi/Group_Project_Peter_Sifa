@@ -23,7 +23,7 @@ let tours = [
     location: { lat: -36.8406, lng: 174.7633 },
     launches: [
       { time: "09:00", capacity: 8 },
-      { time: "11:00", capacity: 0 },
+      { time: "11:00", capacity: 5 },
     ],
     "image": "/assets/1.jpg",
   },
@@ -129,7 +129,8 @@ app.delete("/api/bookings/:id", (req, res) => {
   launch.capacity += booking.partySize;
 
   bookings.splice(bookingIndex, 1);
-  res.json({ message: "Booking cancelled" });
+
+  res.json({ message: "Booking cancelled", ...booking });
 });
 
 app.listen(PORT, () => {

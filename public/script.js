@@ -1,5 +1,20 @@
 let map; 
 let toursData = [];
+
+function createPopupContent(tour) {
+  const launchesHtml = tour.launches.map((l, index) => `
+    Time: ${l.time}<br>
+    Remaining seats: ${l.capacity}<br>
+    ${l.capacity > 0 
+      ? `<a href="#" class="book-now" data-tour-id="${tour.id}" data-launch-index="${index}">Book Now</a>` 
+      : '<span class="text-muted">Sold Out</span>'}
+  `).join("<hr>");
+
+  return `<b>${tour.operator}</b><br>
+          <img src="${tour.image}" width="150" style="display:block; margin-bottom:5px;"><br>
+          ${launchesHtml}`;
+}
+
 if (document.getElementById("map")) {
   
 
@@ -17,22 +32,13 @@ if (document.getElementById("map")) {
       
 tours.forEach((tour) => {
   const marker = L.marker([tour.location.lat, tour.location.lng]).addTo(map);
-
-  const launchesHtml = tour.launches.map((l, index) => `
-    Time: ${l.time}<br>
-    Remaining seats: ${l.capacity}<br>
-    <a href="#" class="book-now" data-tour-id="${tour.id}" data-launch-index="${index}">Book Now</a>
-  `).join("<hr>");
-
-  const popupContent = `<b>${tour.operator}</b><br>
-                        <img src="${tour.image}" width="150" style="display:block; margin-bottom:5px;"><br>
-                        ${launchesHtml}`;
+  tour.marker = marker;
 
   const popup = L.popup({
-    autoClose: false,
-    closeOnClick: false,
-    closeButton: false
-  }).setContent(popupContent);
+  autoClose: false,
+  closeOnClick: false,
+  closeButton: false
+}).setContent(createPopupContent(tour));
 
   let popupHovered = false;
 
@@ -150,9 +156,12 @@ fetch("/api/bookings", {
       return;
     }
 
+    launch.capacity -= bookingData.partySize;
 
-
-const modalBody = document.getElementById("modalBody");
+    if (tour.marker) {
+    tour.marker.getPopup().setContent(createPopupContent(tour));
+}
+   
 modalBody.innerHTML = `
   <h5 class="fw-bold mb-3 text-center">Booking Summary</h5>
 
@@ -203,12 +212,8 @@ modalBody.innerHTML = `
   });
 
   });
-  
+ 
 }
-
-
-
-
 
 const homeBtn = document.getElementById("homeBtn");
 homeBtn.addEventListener("click", () => {
@@ -233,7 +238,7 @@ homeBtn.addEventListener("click", () => {
 
 
 const bookingBtn = document.getElementById("bookingBtn");
-const bookingContainer = document.getElementById("bookingContainer");
+
 
 if (bookingBtn) {
   bookingBtn.addEventListener("click", () => {
@@ -291,6 +296,17 @@ bookingResult.innerHTML = `
               .then(res => res.json())
               .then(resp => {
                 alert(resp.message);
+
+              const tour = toursData.find(t => t.id === data.tourId);
+              if (tour) {
+              const launch = tour.launches.find(l => l.time === data.time);
+              if (launch) launch.capacity += data.partySize;
+              if (tour.marker) {
+      
+                tour.marker.getPopup().setContent(createPopupContent(tour));
+    }
+  }
+
                 bookingContainer.innerHTML = ""; 
                 if (mapDiv) mapDiv.style.display = "block"; 
               });
