@@ -5,7 +5,7 @@ body {
 
 /* For Map height and Boarder */
 #map {
-  height: 800px;         
+  height: 600px;         
   border: 2px solid #444; 
 }
 

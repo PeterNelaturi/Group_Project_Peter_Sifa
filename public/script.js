@@ -68,9 +68,15 @@ function createPopupContent(tour) {
     `;
   }).join("<hr>");
 
-  return `<b>${tour.operator}</b><br>
-          <img src="${tour.image}" width="150" style="display:block; margin-bottom:5px;"><br>
-          ${launchesHtml}`;
+  return `
+    <b>${tour.operator}</b><br>
+    <div class="d-flex align-items-start gap-3">
+      <div style="flex-grow:1; min-width:0;">
+        ${launchesHtml}
+      </div>
+      <img src="${tour.image}" width="150" height="200" style="flex-shrink:0;">
+    </div>
+  `;
 }
 
 function loadMap() {
