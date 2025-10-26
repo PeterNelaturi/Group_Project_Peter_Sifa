@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bookings>
+  <booking>
+    <id>4</id>
+    <name>Sifa zhang</name>
+    <partySize>1</partySize>
+    <tourId>2</tourId>
+    <time>10:00</time>
+    <operator>Harbour Cruises</operator>
+  </booking>
+  <booking>
+    <id>5</id>
+    <name>Sifa zhang</name>
+    <partySize>1</partySize>
+    <tourId>2</tourId>
+    <time>10:00</time>
+    <operator>Harbour Cruises</operator>
+  </booking>
+</bookings>

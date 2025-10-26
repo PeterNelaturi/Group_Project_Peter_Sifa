@@ -79,6 +79,7 @@ function loadMap() {
       .then((res) => res.json())
       .then((tours) => {
         toursData = tours;
+        console.log(tours);
 
         map = L.map("map").setView([-36.84, 174.76], 12);
 
