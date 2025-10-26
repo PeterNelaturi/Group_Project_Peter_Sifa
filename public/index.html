@@ -24,8 +24,8 @@
   <div class="container-fluid">
    
     <div class="d-flex mx-auto">
-      <button id="homeBtn" class="btn btn-success me-3">Home</button>
-      <button id="bookingBtn" class="btn btn-success mx-3">Booking Search</button>
+      <button id="homeBtn" class="btn btn-success me-3"  onclick="HomeBtn()">Home</button>
+      <button id="bookingBtn" class="btn btn-success mx-3" onclick="BookingBtn()">Bookings</button>
       <a href="./game.html" class="btn btn-success ms-3">Entertainment Video Game for Kids</a>
     </div>
 
@@ -38,10 +38,26 @@
 </nav>
 
      
-   <div id="bookingContainer"></div>
-    <div id="map" class="border rounded shadow"></div>
-    <div id="mainContainer"></div>
+    <div id="bookingContainer"></div>
+    <div id="mainContainer" class="border rounded shadow">
+      <div id="filter"class="d-flex justify-content-center align-items-center">
+        <div id="timeFilter" class="input-group mb-3">
+          <label class="input-group-text" for="timeSelector">Time:</label>
+          <select class="form-select" id="timeSelector">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div id="numberFilter" class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Number</span>
+          <input id="number" type="number" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div id="map" class="border rounded shadow"></div>
     </div>
+  </div>
     
 
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">

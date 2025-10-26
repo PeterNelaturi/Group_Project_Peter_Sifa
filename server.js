@@ -20,6 +20,7 @@ let tours = [
   {
     id: 1,
     operator: "Waiheke Explorer",
+    price: 10,
     location: { lat: -36.8406, lng: 174.7633 },
     launches: [
       { time: "09:00", capacity: 8 },
@@ -30,39 +31,43 @@ let tours = [
   {
     id: 2,
     operator: "Harbour Cruises",
+    price: 12,
     location: { lat: -36.8305, lng: 174.7966 },
     launches: [
-      { time: "10:00", capacity: 6 },
-      { time: "14:00", capacity: 2 }, 
+      { time: "10:00", capacity: 26 },
+      { time: "14:00", capacity: 32 }, 
     ],
     "image": "/assets/2.jpg",
   },
   {
     id: 3,
     operator: "Island Discoveries",
+    price: 14,
     location: { lat: -36.8444, lng: 174.7772 },
     launches: [
       { time: "09:00", capacity: 10 },
-      { time: "13:00", capacity: 4 },
+      { time: "13:00", capacity: 24 },
     ],
     "image": "/assets/3.jpg",  
   },
   {
     id: 4,
     operator: "Coastal Adventures",
+    price: 16,
     location: { lat: -36.8575, lng: 174.7833 },
     launches: [
-      { time: "12:00", capacity: 5 },
-      { time: "15:00", capacity: 3 },
+      { time: "12:00", capacity: 15 },
+      { time: "15:00", capacity: 13 },
     ],
     "image": "/assets/4.jpg",
   },
   {
     id: 5,
     operator: "Pacific Tours",
+    price: 18,
     location: { lat: -36.8640, lng: 174.7758 },
     launches: [
-      { time: "10:00", capacity: 0 },
+      { time: "10:00", capacity: 20 },
       { time: "14:00", capacity: 0 },
     ],
     "image": "/assets/5.jpg",
