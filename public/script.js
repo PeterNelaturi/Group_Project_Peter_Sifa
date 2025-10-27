@@ -1,6 +1,6 @@
 let timeSlots = [];
 let numberFilter = 0;
-let timeFilter = "";
+let timeFilter = -1;
 let map;
 let toursData = [];
 
@@ -51,7 +51,7 @@ function refreshPopup() {
 
 function createPopupContent(tour) {
   const launchesHtml = tour.launches.map((l, index) => {
-    const isAvailable = (l.capacity > 0 && l.capacity >= numberFilter) && (timeFilter === "" ||timeSlots[timeFilter] === l.time);
+    const isAvailable = (l.capacity > 0 && l.capacity >= numberFilter) && (timeFilter == -1 || timeSlots[timeFilter] === l.time);
 
     const textColor = isAvailable ? 'text-success' : 'text-danger'; // Bootstrap 绿色 / 红色
     const bgColor = isAvailable ? 'bg-light' : 'bg-warning-subtle'; // 背景色可选
@@ -69,7 +69,7 @@ function createPopupContent(tour) {
   }).join("<hr>");
 
   return `
-    <b>${tour.operator}</b><br>
+    <b>${tour.operator}</b><br><br>
     <div class="d-flex align-items-start gap-3">
       <div style="flex-grow:1; min-width:0;">
         ${launchesHtml}
@@ -94,12 +94,17 @@ function loadMap() {
         }).addTo(map);
 
         //get all time slots
-        timeSlots.length = 0;
         tours.forEach((tour) => {
           const times = tour.launches.map(l => l.time);
-          timeSlots.push(...times);
-          console.log(timeSlots);
+          times.forEach(time => {
+            if (!timeSlots.includes(time)) {
+              timeSlots.push(time);
+            }
+          });
         });
+        timeSlots.sort();
+        console.log(timeSlots);
+
         fillTimeSelector();
 
         tours.forEach((tour) => {

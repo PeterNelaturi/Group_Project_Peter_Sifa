@@ -39,15 +39,12 @@
         <div id="timeFilter" class="input-group mb-3">
           <label class="input-group-text" for="timeSelector">Time:</label>
           <select class="form-select" id="timeSelector">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="-1" selected>Choose...</option>
           </select>
         </div>
         <div id="numberFilter" class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Number</span>
-          <input id="number" type="number" class="form-control" placeholder="Number" aria-label="Number"
+          <input id="number" type="number" class="form-control" min="0" placeholder="Number" aria-label="Number"
             aria-describedby="basic-addon1">
         </div>
       </div>
